@@ -27,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
     private void bindViews() {
         mTextView = (TextView) findViewById(R.id.textView);
