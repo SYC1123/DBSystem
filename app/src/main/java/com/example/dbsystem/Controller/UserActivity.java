@@ -1,7 +1,8 @@
-package com.example.dbsystem;
+package com.example.dbsystem.Controller;
 
 import android.os.Bundle;
 
+import com.example.dbsystem.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;

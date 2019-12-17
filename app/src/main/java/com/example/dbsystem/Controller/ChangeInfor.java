@@ -1,14 +1,16 @@
-package com.example.dbsystem;
+package com.example.dbsystem.Controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class RegisteredActivity extends AppCompatActivity {
+import com.example.dbsystem.R;
+
+public class ChangeInfor extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registered);
+        setContentView(R.layout.activity_change_infor);
     }
 }
