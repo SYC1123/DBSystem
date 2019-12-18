@@ -42,7 +42,7 @@ public class RegisteredActivity extends AppCompatActivity implements RegisterCal
                 } else {
                     if (mPasswordText.equals(mPasswordText2)) {
                         Toast.makeText(RegisteredActivity.this, "123456789", Toast.LENGTH_SHORT).show();
-                        helper.startNetThread("127.0.0.1",6666,"{}",RegisteredActivity.this);
+                        helper.startNetThread("172.20.10.11",6666,"register:"+name+"&"+phone+"&"+address+"&"+mPasswordText,RegisteredActivity.this);
                     } else {
                         Toast.makeText(RegisteredActivity.this, "两次密码不同！", Toast.LENGTH_SHORT).show();
                     }
@@ -64,11 +64,11 @@ public class RegisteredActivity extends AppCompatActivity implements RegisterCal
 
     @Override
     public void onSucceed(String response) {
-
+        Toast.makeText(this, response, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onFalied(String errStr) {
-
+        Toast.makeText(this, errStr, Toast.LENGTH_SHORT).show();
     }
 }
