@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controller.PalceUpActivity">
+    tools:context=".Controller.PlaceDownActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -33,15 +33,6 @@
                 android:text="查看详情" />
 
             <Button
-                android:id="@+id/button2"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="#4CAF50"
-                android:text="查看详情" />
-
-            <Button
                 android:id="@+id/botton2"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -50,14 +41,6 @@
                 android:background="#4CAF50"
                 android:text="查看详情" />
 
-            <Button
-                android:id="@+id/button4"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="#4CAF50"
-                android:text="查看详情" />
         </LinearLayout>
 
         <LinearLayout
@@ -76,15 +59,6 @@
                 android:text="查看详情" />
 
             <Button
-                android:id="@+id/button6"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="#4CAF50"
-                android:text="查看详情" />
-
-            <Button
                 android:id="@+id/botton7"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -93,14 +67,6 @@
                 android:background="#4CAF50"
                 android:text="查看详情" />
 
-            <Button
-                android:id="@+id/button8"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="#4CAF50"
-                android:text="查看详情" />
         </LinearLayout>
 
         <LinearLayout
@@ -119,25 +85,7 @@
                 android:text="查看详情" />
 
             <Button
-                android:id="@+id/button10"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="#4CAF50"
-                android:text="查看详情" />
-
-            <Button
                 android:id="@+id/botton11"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="#4CAF50"
-                android:text="查看详情" />
-
-            <Button
-                android:id="@+id/button12"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="1dp"
@@ -163,15 +111,6 @@
                 android:text="查看详情" />
 
             <Button
-                android:id="@+id/button14"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="#4CAF50"
-                android:text="查看详情" />
-
-            <Button
                 android:id="@+id/botton15"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -180,14 +119,6 @@
                 android:background="#4CAF50"
                 android:text="查看详情" />
 
-            <Button
-                android:id="@+id/button16"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="#4CAF50"
-                android:text="查看详情" />
         </LinearLayout>
 
         <LinearLayout
@@ -206,15 +137,6 @@
                 android:text="查看详情" />
 
             <Button
-                android:id="@+id/button18"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="#4CAF50"
-                android:text="查看详情" />
-
-            <Button
                 android:id="@+id/botton19"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -223,14 +145,6 @@
                 android:background="#4CAF50"
                 android:text="查看详情" />
 
-            <Button
-                android:id="@+id/button20"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="#4CAF50"
-                android:text="查看详情" />
         </LinearLayout>
 
         <LinearLayout
@@ -249,15 +163,6 @@
                 android:text="查看详情" />
 
             <Button
-                android:id="@+id/button22"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="#4CAF50"
-                android:text="查看详情" />
-
-            <Button
                 android:id="@+id/botton23"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -266,14 +171,6 @@
                 android:background="#4CAF50"
                 android:text="查看详情" />
 
-            <Button
-                android:id="@+id/button24"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="#4CAF50"
-                android:text="查看详情" />
         </LinearLayout>
     </LinearLayout>
 
@@ -455,16 +352,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="1场南半篮"
+            android:gravity="center"
+            android:text="3场全篮"
             android:textSize="14sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="1场北半篮"
             android:textStyle="bold" />
 
         <TextView
@@ -472,30 +362,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="2场南半蓝"
+            android:gravity="center"
+            android:text="4场全篮"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/textView14"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="2场北半篮"
-            android:textStyle="bold" />
     </LinearLayout>
 
     <Button
-        android:id="@+id/up"
-        android:layout_width="176dp"
+        android:id="@+id/down"
+        android:layout_width="177dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/shape"
-        android:text="查看二楼"
+        android:text="查看一楼"
         android:textColor="@android:color/background_light"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />

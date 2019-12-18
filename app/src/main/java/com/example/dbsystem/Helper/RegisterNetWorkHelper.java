@@ -2,9 +2,12 @@ package com.example.dbsystem.Helper;
 
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.dbsystem.Interface.RegisterCallback;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,21 +15,32 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-public class NetWorkHelper {
+public class RegisterNetWorkHelper {
 
     private static final int HANDLER_MSG_TELL_RECV = 1;
 
-    public static Handler handler = new Handler() {
+    private RegisterCallback callback;
+
+    private AppCompatActivity mContent;
+
+    public RegisterNetWorkHelper(AppCompatActivity appCompatActivity) {
+        this.mContent = appCompatActivity;
+    }
+
+    public Handler handler = new Handler() {
         @Override
         public void handleMessage(@NonNull Message msg) {
-            // 设置一个弹窗
-            /*AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-            builder.setMessage("python服务器的数据显示：" + msg.obj);
-            builder.create().show();*/
+            if (msg.obj.equals("1")) {
+                callback.onSucceed("注册成功！");
+            } else{
+                callback.onFalied(msg.obj.toString());
+            }
+            Log.d("123456", "handleMessage: ");
         }
     };
 
-    public static void startNetThread(final String host, final int port, final String data) {
+    public void startNetThread(final String host, final int port, final String data, RegisterCallback myCallback) {
+        this.callback = myCallback;
         Thread thread = new Thread() {
             @Override
             public void run() {
@@ -46,9 +60,7 @@ public class NetWorkHelper {
                     int n = is.read(bytes);
 
                     Message msg = handler.obtainMessage(HANDLER_MSG_TELL_RECV, new String(bytes, 0, n));
-
                     msg.sendToTarget();
-
                     is.close();
                     socket.close();
                 } catch (UnknownHostException e) {

@@ -13,7 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.dbsystem.Controller.PalceActivity;
+import com.example.dbsystem.Controller.PalceUpActivity;
 import com.example.dbsystem.R;
 
 import java.util.Calendar;
@@ -47,7 +47,7 @@ public class HomeFragment extends Fragment {
         mSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getContext(), PalceActivity.class);
+                Intent intent=new Intent(getContext(), PalceUpActivity.class);
                 startActivity(intent);
             }
         });
