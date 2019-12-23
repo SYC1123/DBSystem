@@ -42,7 +42,7 @@
                 android:text="查看详情" />
 
             <Button
-                android:id="@+id/botton2"
+                android:id="@+id/botton3"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="1dp"

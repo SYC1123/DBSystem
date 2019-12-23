@@ -2,11 +2,13 @@ package com.example.dbsystem.Helper;
 
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.dbsystem.Interface.RegisterCallback;
+import com.example.dbsystem.Interface.PlaceDetailCallback;
+import com.example.dbsystem.Interface.QueryPlaceCallback;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,30 +16,23 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-public class RegisterNetWorkHelper {
-
+public class PlaceDetailNetWorkHelper {
     private static final int HANDLER_MSG_TELL_RECV = 1;
 
-    private RegisterCallback callback;
+    private PlaceDetailCallback callback;
 
     private AppCompatActivity mContent;
 
-    public RegisterNetWorkHelper(AppCompatActivity appCompatActivity) {
-        this.mContent = appCompatActivity;
-    }
 
     public Handler handler = new Handler() {
         @Override
         public void handleMessage(@NonNull Message msg) {
-            if (msg.obj.equals("1")) {
-                callback.onSucceed("注册成功！");
-            } else {
-                callback.onFalied(msg.obj.toString());
-            }
+            Log.d("123456", "handleMessage: "+msg.obj);
+            callback.onSucceed((String) msg.obj);
         }
     };
 
-    public void startNetThread(final String host, final int port, final String data, RegisterCallback myCallback) {
+    public void startNetThread(final String host, final int port, final String data, PlaceDetailCallback myCallback) {
         this.callback = myCallback;
         Thread thread = new Thread() {
             @Override
@@ -56,7 +51,7 @@ public class RegisterNetWorkHelper {
                     byte[] bytes = new byte[1024];
                     //回应数据
                     int n = is.read(bytes);
-
+                    Log.d("888", "handleMessage: "+new String(bytes, 0, n));
                     Message msg = handler.obtainMessage(HANDLER_MSG_TELL_RECV, new String(bytes, 0, n));
                     msg.sendToTarget();
                     is.close();

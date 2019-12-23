@@ -8,9 +8,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.dbsystem.Helper.Constant;
 import com.example.dbsystem.Helper.RegisterNetWorkHelper;
-import com.example.dbsystem.R;
 import com.example.dbsystem.Interface.RegisterCallback;
+import com.example.dbsystem.R;
 
 public class RegisteredActivity extends AppCompatActivity implements RegisterCallback<String> {
     private EditText mPassword2;
@@ -41,8 +42,9 @@ public class RegisteredActivity extends AppCompatActivity implements RegisterCal
                     Toast.makeText(RegisteredActivity.this, "内容不能为空！", Toast.LENGTH_SHORT).show();
                 } else {
                     if (mPasswordText.equals(mPasswordText2)) {
-                        Toast.makeText(RegisteredActivity.this, "123456789", Toast.LENGTH_SHORT).show();
-                        helper.startNetThread("172.20.10.11",6666,"register:"+name+"&"+phone+"&"+address+"&"+mPasswordText,RegisteredActivity.this);
+//                        String ip= IPHelper.GetIp()+"";
+//                        Toast.makeText(RegisteredActivity.this, ip, Toast.LENGTH_SHORT).show();
+                        helper.startNetThread(Constant.IPADDRESS,Constant.PORT,"register:"+phone+"&"+name+"&"+address+"&"+mPasswordText,RegisteredActivity.this);
                     } else {
                         Toast.makeText(RegisteredActivity.this, "两次密码不同！", Toast.LENGTH_SHORT).show();
                     }

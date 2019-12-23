@@ -6,7 +6,7 @@ import android.os.Message;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.dbsystem.Interface.RegisterCallback;
+import com.example.dbsystem.Interface.LoginCallback;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,30 +14,32 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-public class RegisterNetWorkHelper {
-
+public class LoginNetWorkHelper  {
     private static final int HANDLER_MSG_TELL_RECV = 1;
 
-    private RegisterCallback callback;
+    private LoginCallback callback;
 
     private AppCompatActivity mContent;
 
-    public RegisterNetWorkHelper(AppCompatActivity appCompatActivity) {
+    public LoginNetWorkHelper(AppCompatActivity appCompatActivity) {
         this.mContent = appCompatActivity;
     }
 
     public Handler handler = new Handler() {
         @Override
         public void handleMessage(@NonNull Message msg) {
-            if (msg.obj.equals("1")) {
-                callback.onSucceed("注册成功！");
-            } else {
-                callback.onFalied(msg.obj.toString());
+            if (msg.obj.equals("2")) {
+                callback.onFalied("账号或密码错误！");
+            } else if (msg.obj.equals("3")){
+                callback.onFalied("该用户不存在！");
+            }else {
+                callback.onSucceed(msg.obj);
             }
+
         }
     };
 
-    public void startNetThread(final String host, final int port, final String data, RegisterCallback myCallback) {
+    public void startNetThread(final String host, final int port, final String data, LoginCallback myCallback) {
         this.callback = myCallback;
         Thread thread = new Thread() {
             @Override
