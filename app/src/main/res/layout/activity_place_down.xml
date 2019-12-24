@@ -8,13 +8,12 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="324dp"
-        android:layout_height="554dp"
+        android:layout_width="307dp"
+        android:layout_height="372dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/linearLayout2"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
         <LinearLayout
@@ -178,11 +177,9 @@
         android:id="@+id/linearLayout2"
         android:layout_width="73dp"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout"
         app:layout_constraintTop_toTopOf="@+id/linearLayout">
 
         <LinearLayout
@@ -353,7 +350,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="3场全篮"
+            android:text="5场全篮"
             android:textSize="14sp"
             android:textStyle="bold" />
 
@@ -363,7 +360,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="4场全篮"
+            android:text="6场全篮"
             android:textStyle="bold" />
 
     </LinearLayout>
@@ -374,14 +371,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
         android:background="@drawable/shape"
         android:text="查看一楼"
         android:textColor="@android:color/background_light"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />

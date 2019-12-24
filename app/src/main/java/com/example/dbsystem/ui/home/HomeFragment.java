@@ -41,7 +41,8 @@ public class HomeFragment extends Fragment implements QueryPlaceCallback {
     private QueryPlaceNetWorkHelper helpe;
     Map<Integer, Integer> ordedPlace = new HashMap<Integer, Integer>();
     ArrayList<Integer> repairList = new ArrayList<Integer>();
-
+    ArrayList<Integer> placeidList = new ArrayList<Integer>();
+    ArrayList<Integer> ordertimeList = new ArrayList<Integer>();
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -66,16 +67,16 @@ public class HomeFragment extends Fragment implements QueryPlaceCallback {
                     }
                     date = year + "-" + mmonth + "-" + day;
 //                    Toast.makeText(getContext(), ""+date, Toast.LENGTH_SHORT).show();
+                    //场地查询
+                    mSelect.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            helpe.startNetThread(Constant.IPADDRESS, Constant.PORT, "queryplace:" + date, HomeFragment.this);
+                            // repairNetWorkHelper.startNetThread(Constant.IPADDRESS, Constant.PORT, "queryrepairplace:", HomeFragment.this);
+                        }
+                    });
                 }
 
-            }
-        });
-        //场地查询
-        mSelect.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                helpe.startNetThread(Constant.IPADDRESS, Constant.PORT, "queryplace:" + date, HomeFragment.this);
-                // repairNetWorkHelper.startNetThread(Constant.IPADDRESS, Constant.PORT, "queryrepairplace:", HomeFragment.this);
             }
         });
         return root;
@@ -100,8 +101,10 @@ public class HomeFragment extends Fragment implements QueryPlaceCallback {
 
     @Override
     public void onSucceed(String response) {
-        ordedPlace.clear();
+//        ordedPlace.clear();
         repairList.clear();
+        placeidList.clear();
+        ordertimeList.clear();
         try {
             /**
              * JSON数组有了 key person 这样的标记，就必须先是个 JSON对象
@@ -118,11 +121,13 @@ public class HomeFragment extends Fragment implements QueryPlaceCallback {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 int placeid = jsonObject.optInt("PlaceID", 0);
                 int ordertime = jsonObject.optInt("OrderTime", 0);
-                ordedPlace.put(placeid, ordertime);
+                placeidList.add(placeid);
+                ordertimeList.add(ordertime);
+//                ordedPlace.put(placeid, ordertime);
                 // 日志打印结果：
             }
-            Log.d(TAG, "已经预定的 解析的结果 " + ordedPlace);
-
+            Log.d(TAG, "已经预定的 解析的结果 " + placeidList);
+            Log.d(TAG, "已经预定的 解析的结果 " + ordertimeList);
             JSONArray jsonArray2 = jsonObjectALL.getJSONArray("RepairingPlace");
             Log.d(TAG, "维修的 jsonArray:" + jsonArray2);
             for (int i = 0; i < jsonArray2.length(); i++) {
@@ -138,7 +143,10 @@ public class HomeFragment extends Fragment implements QueryPlaceCallback {
         }
         Intent intent = new Intent(getContext(), PalceUpActivity.class);
         intent.putIntegerArrayListExtra("repairID",repairList);
-        intent.putExtra("map",(Serializable)ordedPlace);
+//        intent.putExtra("map",(Serializable)ordedPlace);
+        intent.putIntegerArrayListExtra("placeidList",placeidList);
+        intent.putIntegerArrayListExtra("ordertimeList",ordertimeList);
+        intent.putExtra("date",date);
         startActivity(intent);
     }
 }

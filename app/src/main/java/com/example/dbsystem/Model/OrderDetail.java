@@ -8,13 +8,12 @@ public class OrderDetail {
     private String name;//姓名
     private int statue;//预定状态
 
-    public OrderDetail(int palceId, String orderDate, int timeId,float price,String name,int statue) {
+    public OrderDetail(int palceId, String orderDate, int timeId,float price,String name) {
         this.orderDate = orderDate;
         this.palceId = palceId;
         this.timeId = timeId;
         this.price=price;
         this.name=name;
-        this.statue=statue;
     }
 
     public int getPalceId() {

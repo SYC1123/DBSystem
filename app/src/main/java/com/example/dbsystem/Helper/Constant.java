@@ -1,6 +1,6 @@
 package com.example.dbsystem.Helper;
 
 public class Constant {
-    public static String IPADDRESS = "192.168.31.38";
+    public static String IPADDRESS = "172.20.10.11";
     public static int PORT = 6666;
 }

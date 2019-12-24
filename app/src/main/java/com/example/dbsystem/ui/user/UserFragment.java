@@ -1,4 +1,4 @@
-package com.example.dbsystem.ui.notifications;
+package com.example.dbsystem.ui.user;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,26 +8,35 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 
 import com.example.dbsystem.Controller.ChangeInfor;
 import com.example.dbsystem.Controller.LoginActivity;
-import com.example.dbsystem.Controller.MainActivity;
+import com.example.dbsystem.Controller.MyCollectionActivity;
 import com.example.dbsystem.Helper.SaveUserHelper;
+import com.example.dbsystem.Model.User;
 import com.example.dbsystem.R;
 
-public class NotificationsFragment extends Fragment {
-    ConstraintLayout constraintLayout;
+public class UserFragment extends Fragment {
+    ConstraintLayout constraintLayout,collection;
     Button exit;
+    private TextView username,phone,opentime,address;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_notifications, container, false);
+        View root = inflater.inflate(R.layout.fragment_user, container, false);
+        username=root.findViewById(R.id.username);
+        phone=root.findViewById(R.id.phone);
+        opentime=root.findViewById(R.id.opentime);
+        address=root.findViewById(R.id.address);
+        User user=SaveUserHelper.getUser(getContext(),"data","user");
+        username.setText(user.getName());
+        phone.setText(user.getTel());
+        opentime.setText(user.getDate());
+        address.setText(user.getAddress());
         constraintLayout=root.findViewById(R.id.set);
+        collection=root.findViewById(R.id.collection);
         constraintLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,6 +53,16 @@ public class NotificationsFragment extends Fragment {
                 getActivity().finish();
             }
         });
+
+        collection.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getContext(), MyCollectionActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
         return root;
     }
 }

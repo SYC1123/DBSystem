@@ -36,8 +36,11 @@ public class PalceUpActivity extends AppCompatActivity implements View.OnClickLi
             , {R.id.botton13, R.id.button14, R.id.botton15, R.id.button16}
             , {R.id.botton17, R.id.button18, R.id.botton19, R.id.button20}
             , {R.id.botton21, R.id.button22, R.id.botton23, R.id.button24}};
-    HashMap<Integer, Integer> ordedPlace;
+//    HashMap<Integer, Integer> ordedPlace;
     ArrayList<Integer> repairID;
+    private String date = "";
+    ArrayList<Integer> placeidList = new ArrayList<Integer>();
+    ArrayList<Integer> ordertimeList = new ArrayList<Integer>();
 
     @SuppressLint("ResourceAsColor")
     @Override
@@ -45,22 +48,27 @@ public class PalceUpActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_palce);
         bindViews();
-        ordedPlace = (HashMap<Integer, Integer>) getIntent().getSerializableExtra("map");
+        Intent intent = getIntent();
+        date = intent.getStringExtra("date");
+        placeidList=(ArrayList<Integer>) getIntent().getIntegerArrayListExtra("placeidList");
+        ordertimeList=(ArrayList<Integer>) getIntent().getIntegerArrayListExtra("ordertimeList");
+//        ordedPlace = (HashMap<Integer, Integer>) getIntent().getSerializableExtra("map");
         repairID = (ArrayList<Integer>) getIntent().getIntegerArrayListExtra("repairID");
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 4; j++) {
                 buttons[i][j].setOnClickListener(this);
             }
         }
-        for (Integer key : ordedPlace.keySet()) {
-            Log.v("wjw", "接收到的Key = " + key);
-            Log.v("wjw", "接收到的value = " + ordedPlace.get(key));
-            int i = key - 1;
-            int j = ordedPlace.get(key) - 1;
+
+        for (int k=0;k<placeidList.size();k++) {
+            Log.v("wjw", "接收到的场地号 = " + placeidList.get(k));
+            Log.v("wjw", "接收到的时间号 = " + ordertimeList.get(k));
+            int i = placeidList.get(k) - 1;
+            int j = ordertimeList.get(k) - 1;
             if (0 <= i && i <= 3) {
-                buttons[i][j].setBackgroundColor(R.color.red);
-                buttons[i][j].setText("该场地已预定");
-                buttons[i][j].setEnabled(false);
+                buttons[j][i].setBackgroundColor(R.color.red);
+                buttons[j][i].setText("该场地已预定");
+                buttons[j][i].setEnabled(false);
             }
         }
         Log.d("123456", "analyze 解析的结果 " + repairID);
@@ -80,7 +88,10 @@ public class PalceUpActivity extends AppCompatActivity implements View.OnClickLi
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(PalceUpActivity.this, PlaceDownActivity.class);
-                intent.putExtra("map", (Serializable) ordedPlace);
+//                intent.putExtra("map", (Serializable) ordedPlace);
+                intent.putIntegerArrayListExtra("placeidList",placeidList);
+                intent.putIntegerArrayListExtra("ordertimeList",ordertimeList);
+                intent.putExtra("date",date);
                 intent.putExtra("repairID", repairID);
                 startActivity(intent);
             }
@@ -98,113 +109,139 @@ public class PalceUpActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
-        int position;
+        int position, time;
         Intent intent;
         switch (v.getId()) {
             case R.id.botton:
                 position = 1;
-                startactivity(position);
+                time = 1;
+                startactivity(position,time,date);
                 break;
             case R.id.button2:
                 position = 2;
-                startactivity(position);
+                time = 1;
+                startactivity(position,time,date);
                 break;
             case R.id.botton3:
                 position = 3;
-                startactivity(position);
+                time = 1;
+                startactivity(position,time,date);
                 break;
             case R.id.button4:
                 position = 4;
-                startactivity(position);
+                time = 1;
+                startactivity(position,time,date);
                 break;
             case R.id.botton5:
                 position = 1;
-                startactivity(position);
+                time = 2;
+                startactivity(position,time,date);
                 break;
             case R.id.button6:
                 position = 2;
-                startactivity(position);
+                time = 2;
+                startactivity(position,time,date);
                 break;
             case R.id.botton7:
                 position = 3;
-                startactivity(position);
+                time = 2;
+                startactivity(position,time,date);
                 break;
             case R.id.button8:
                 position = 4;
-                startactivity(position);
+                time = 2;
+                startactivity(position,time,date);
                 break;
             case R.id.botton9:
                 position = 1;
-                startactivity(position);
+                time = 3;
+                startactivity(position,time,date);
                 break;
             case R.id.button10:
                 position = 2;
-                startactivity(position);
+                time = 3;
+                startactivity(position,time,date);
                 break;
             case R.id.botton11:
                 position = 3;
-                startactivity(position);
+                time = 3;
+                startactivity(position,time,date);
                 break;
             case R.id.button12:
                 position = 4;
-                startactivity(position);
+                time = 3;
+                startactivity(position,time,date);
                 break;
             case R.id.botton13:
                 position = 1;
-                startactivity(position);
+                time = 4;
+                startactivity(position,time,date);
                 break;
             case R.id.button14:
                 position = 2;
-                startactivity(position);
+                time = 4;
+                startactivity(position,time,date);
                 break;
             case R.id.botton15:
                 position = 3;
-                startactivity(position);
+                time = 4;
+                startactivity(position,time,date);
                 break;
             case R.id.button16:
                 position = 4;
-                startactivity(position);
+                time = 4;
+                startactivity(position,time,date);
                 break;
             case R.id.botton17:
                 position = 1;
-                startactivity(position);
+                time = 5;
+                startactivity(position,time,date);
                 break;
             case R.id.button18:
                 position = 2;
-                startactivity(position);
+                time = 5;
+                startactivity(position,time,date);
                 break;
             case R.id.botton19:
                 position = 3;
-                startactivity(position);
+                time = 5;
+                startactivity(position,time,date);
                 break;
             case R.id.button20:
                 position = 4;
-                startactivity(position);
+                time = 5;
+                startactivity(position,time,date);
                 break;
             case R.id.botton21:
                 position = 1;
-                startactivity(position);
+                time = 6;
+                startactivity(position,time,date);
                 break;
             case R.id.button22:
                 position = 2;
-                startactivity(position);
+                time = 6;
+                startactivity(position,time,date);
                 break;
             case R.id.botton23:
                 position = 3;
-                startactivity(position);
+                time = 6;
+                startactivity(position,time,date);
                 break;
             case R.id.button24:
                 position = 4;
-                startactivity(position);
+                time = 6;
+                startactivity(position,time,date);
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + v.getId());
         }
     }
 
-    private void startactivity(int position) {
+    private void startactivity(int position, int time,String date) {
         Intent intent = new Intent(PalceUpActivity.this, DetailsActivity.class);
         intent.putExtra("position", position);
+        intent.putExtra("time", time);
+        intent.putExtra("date",date);
         startActivity(intent);
     }
 }

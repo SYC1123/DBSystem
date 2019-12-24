@@ -67,6 +67,7 @@ public class RegisteredActivity extends AppCompatActivity implements RegisterCal
     @Override
     public void onSucceed(String response) {
         Toast.makeText(this, response, Toast.LENGTH_SHORT).show();
+        finish();
     }
 
     @Override

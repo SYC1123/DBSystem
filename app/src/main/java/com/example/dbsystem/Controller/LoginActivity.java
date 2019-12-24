@@ -50,7 +50,12 @@ public class LoginActivity extends AppCompatActivity implements LoginCallback<St
                 if (account.equals("") || password.equals("")) {
                     Toast.makeText(LoginActivity.this, "账号或密码不能为空！", Toast.LENGTH_SHORT).show();
                 } else {
-                    helper.startNetThread(Constant.IPADDRESS, Constant.PORT, "login:" + account + "&" + password, LoginActivity.this);
+                    if (account.equals("13853531141") && password.equals("123456")) {
+                        Intent intent = new Intent(LoginActivity.this, AdminActivity.class);
+                        startActivity(intent);
+                    } else {
+                        helper.startNetThread(Constant.IPADDRESS, Constant.PORT, "login:" + account + "&" + password, LoginActivity.this);
+                    }
                 }
             }
         });
@@ -68,7 +73,7 @@ public class LoginActivity extends AppCompatActivity implements LoginCallback<St
     @Override
     public void onSucceed(String response) {
         Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
-        SaveUserHelper.saveIslogin(this,"data","islogin");
+        SaveUserHelper.saveIslogin(this, "data", "islogin");
 
         Log.d("123456", "onSucceed: " + response);
         try {
@@ -84,9 +89,9 @@ public class LoginActivity extends AppCompatActivity implements LoginCallback<St
             String password = jsonObject.optString("Password", null);
             int status = jsonObject.optInt("Status", 0);
             User user = new User(tel, name, address, date, password, status);
-            SaveUserHelper.saveUser(this,"data","user",user);
+            SaveUserHelper.saveUser(this, "data", "user", user);
             // 日志打印结果：
-            Log.d("123546", "analyzeJSON1解析的结果："+address+name+tel+date+password+status);
+            Log.d("123546", "analyzeJSON1解析的结果：" + address + name + tel + date + password + status);
 
         } catch (Exception e) {
             e.printStackTrace();
