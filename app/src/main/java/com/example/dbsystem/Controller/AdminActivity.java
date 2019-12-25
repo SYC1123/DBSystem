@@ -14,6 +14,7 @@ public class AdminActivity extends AppCompatActivity {
 
     private Button mPlacemanager;
     private Button mStatistical;
+    private Button mChange;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,9 +35,17 @@ public class AdminActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        mChange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(AdminActivity.this,CancelOrederActivity.class);
+                startActivity(intent);
+            }
+        });
     }
     private void bindViews() {
         mPlacemanager = (Button) findViewById(R.id.placemanager);
         mStatistical = (Button) findViewById(R.id.statistical);
+        mChange=findViewById(R.id.change);
     }
 }
